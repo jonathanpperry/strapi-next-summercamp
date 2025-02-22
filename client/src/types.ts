@@ -17,6 +17,21 @@ export interface LogoProps {
     image: ImageProps;
 }
 
+
+export interface ArticleProps {
+    id: number;
+    documentId: string;
+    title: string;
+    description: string;
+    slug: string;
+    image: ImageProps;
+    author: string;
+    featured: boolean;
+    publishedAt: string;
+    createdAt: string;
+    updatedAt: string;
+}
+
 type ComponentType = "blocks.hero-section" | "blocks.info-block" | "blocks.featured-article" | "blocks.subscribe";
 
 interface Base<
