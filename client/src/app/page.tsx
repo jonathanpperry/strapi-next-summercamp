@@ -4,6 +4,7 @@ import { ContentList } from "@/components/ContentList";
 
 import { getHomePage } from "@/data/loaders";
 import { notFound } from "next/navigation";
+import { PageProps } from "../../.next/types/app/layout";
 
 async function loader() {
   const data = await getHomePage();
@@ -12,7 +13,8 @@ async function loader() {
   return { ...data.data };
 }
 
-export default async function HomeRoute() {
+export default async function HomeRoute({ searchParams}: PageProps) {
+  const {query} = await searchParams;
   const data = await loader();
   const blocks = data?.blocks || [];
   console.log(data);
@@ -24,6 +26,8 @@ export default async function HomeRoute() {
         path="/api/articles"
         component={BlogCard}
         featured
+        showSearch
+        query={query}
       />
     </div>
   );
